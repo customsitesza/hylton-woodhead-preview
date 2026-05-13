@@ -88,11 +88,20 @@ section {
   background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
 }
 .nav.scrolled {
+  background: transparent;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(200, 160, 78, 0.1);
+}
+/* Pseudo-element carries the blur so backdrop-filter doesn't break
+   position:fixed on the mobile menu overlay (a known browser quirk) */
+.nav.scrolled::after {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: rgba(10, 10, 10, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(200, 160, 78, 0.1);
+  z-index: -1;
 }
 .nav-inner {
   display: flex;
